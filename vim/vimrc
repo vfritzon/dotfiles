@@ -1,0 +1,44 @@
+set nocompatible
+syntax enable
+filetype on
+filetype indent on
+filetype plugin on
+
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r  
+
+set background=dark
+colorscheme solarized
+
+set backupdir=~/vimtmp,.
+set directory=~/vimtmp,.
+
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+" Always display the status line
+set laststatus=2
+
+" Leader character
+let mapleader = ","
+
+" Numbers
+set number
+set numberwidth=5
+
+" Turn off bell
+set vb t_vb= 
+
+" Insert New Line 
+map <S-Enter> O<ESC> 
+map <Enter> o<ESC>
+
+" Toggle NERDTree
+nmap <silent> <C-D> :NERDTreeToggle<CR>
+
+" Keep visual selection after indenting
+noremap < <gv
+noremap > >gv
