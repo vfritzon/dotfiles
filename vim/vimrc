@@ -17,8 +17,10 @@ colorscheme solarized
 set backupdir=~/vimtmp,.
 set directory=~/vimtmp,.
 
-" Softtabs, 2 spaces
-set tabstop = softtabstop = shiftwidth = 2
+" Tabs
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 
 " Always display the status line
