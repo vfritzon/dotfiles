@@ -40,9 +40,6 @@ set vb t_vb=
 map <S-Enter> O<ESC> 
 map <Enter> o<ESC>
 
-" Toggle NERDTree
-nmap <silent> <C-D> :NERDTreeToggle<CR>
-
 " Keep visual selection after indenting
 noremap < <gv
 noremap > >gv

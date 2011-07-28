@@ -1,5 +1,7 @@
 alias l="ls -lahG"
 alias wget="curl -O"
 
-alias g="git status"
+alias ..="cd .."
 
+alias g="git status"
+alias gc="git commit"
