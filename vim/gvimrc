@@ -1,2 +1,2 @@
-set guifont=Inconsolata:h18
-
+set guifont=Inconsolata:h20
+set guioptions-=L

@@ -13,7 +13,6 @@ set guioptions-=r
 
 set background=dark
 colorscheme solarized
-
 set backupdir=~/vimtmp,.
 set directory=~/vimtmp,.
 
@@ -33,6 +32,10 @@ let mapleader = ","
 set number
 set numberwidth=5
 
+" Columns and wrapping
+set cc=80
+set nowrap
+
 " Turn off bell
 set vb t_vb= 
 
@@ -43,3 +46,7 @@ map <Enter> o<ESC>
 " Keep visual selection after indenting
 noremap < <gv
 noremap > >gv
+
+" Search
+set hlsearch
+set incsearch
