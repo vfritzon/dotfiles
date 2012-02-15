@@ -1,2 +1,5 @@
 set guifont=Inconsolata:h20
-set guioptions-=L
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r  
+
