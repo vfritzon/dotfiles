@@ -5,3 +5,6 @@ alias ..="cd .."
 
 alias g="git status"
 alias gc="git commit"
+
+alias tu='top -o cpu' # cpu
+alias tm='top -o vsize' # memory
