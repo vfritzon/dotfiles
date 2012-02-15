@@ -50,3 +50,4 @@ noremap > >gv
 " Search
 set hlsearch
 set incsearch
+nnoremap <leader><space> :noh<cr>
