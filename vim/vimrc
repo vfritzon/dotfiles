@@ -2,6 +2,7 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 set nocompatible
+
 syntax enable
 filetype on
 filetype indent on
@@ -9,6 +10,7 @@ filetype plugin on
 
 set background=dark
 colorscheme solarized
+
 set backupdir=~/vimtmp,.
 set directory=~/vimtmp,.
 
@@ -33,10 +35,10 @@ set cc=80
 set nowrap
 
 " Turn off bell
-set vb t_vb= 
+set vb t_vb=
 
-" Insert New Line 
-map <S-Enter> O<ESC> 
+" Insert New Line
+map <S-Enter> O<ESC>
 map <Enter> o<ESC>
 
 " Keep visual selection after indenting
@@ -47,3 +49,6 @@ noremap > >gv
 set hlsearch
 set incsearch
 nnoremap <leader><space> :noh<cr>
+
+" Scrolling
+set scrolloff=4
