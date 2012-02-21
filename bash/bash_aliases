@@ -1,5 +1,4 @@
 alias l="ls -oGhA"
-alias wget="curl -O"
 
 alias ..="cd .."
 
