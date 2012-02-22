@@ -52,3 +52,7 @@ nnoremap <leader><space> :noh<cr>
 
 " Scrolling
 set scrolloff=4
+
+" Switch between buffers
+nnoremap <silent> ,z :bp<CR>
+nnoremap <silent> ,x :bn<CR>
