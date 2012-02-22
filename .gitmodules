@@ -18,3 +18,7 @@
   path = vim/bundle/web-indent
   url = https://github.com/garbas/vim-web-indent.git
   ignore = dirty
+[submodule "vim/bundle/ruby"]
+  path = vim/bundle/ruby
+  url = https://github.com/vim-ruby/vim-ruby.git
+  ignore = dirty
