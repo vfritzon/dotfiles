@@ -3,7 +3,7 @@
   url = https://github.com/altercation/vim-colors-solarized.git
   ignore = dirty
 [submodule "vim/bundle/command-t"]
-  path = vim/bundle/command-t
+  path = https://wincent.com/products/command-t
   url = git://git.wincent.com/command-t.git
   ignore = dirty
 [submodule "vim/bundle/snipmate"]
@@ -15,6 +15,6 @@
   url = https://github.com/tpope/vim-surround.git
   ignore = dirty
 [submodule "vim/bundle/web-indent"]
-	path = vim/bundle/web-indent
-	url = https://github.com/garbas/vim-web-indent.git
+  path = vim/bundle/web-indent
+  url = https://github.com/garbas/vim-web-indent.git
   ignore = dirty
