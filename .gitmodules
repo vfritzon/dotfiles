@@ -22,3 +22,7 @@
   path = vim/bundle/ruby
   url = https://github.com/vim-ruby/vim-ruby.git
   ignore = dirty
+[submodule "vim/bundle/jasmine"]
+  path = vim/bundle/jasmine
+  url = https://github.com/thomd/vim-jasmine.git
+  ignore = dirty
