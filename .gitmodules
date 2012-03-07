@@ -26,3 +26,7 @@
   path = vim/bundle/jasmine
   url = https://github.com/thomd/vim-jasmine.git
   ignore = dirty
+[submodule "vim/bundle/latex"]
+	path = vim/bundle/latex
+	url = https://github.com/jcf/vim-latex.git
+  ignore = dirty
