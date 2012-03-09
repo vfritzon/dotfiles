@@ -2,14 +2,16 @@ call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 set nocompatible
+" allow unsaved background buffers and remember marks/undo for them
+set hidden
 
 syntax enable
 filetype on
 filetype indent on
 filetype plugin on
 
-set background=dark
 colorscheme solarized
+set background=light
 
 set backupdir=~/vimtmp,.
 set directory=~/vimtmp,.
@@ -22,13 +24,13 @@ set expandtab
 
 " Always display the status line
 set laststatus=2
-
+" highlight current line
+set cursorline
 " Leader character
 let mapleader = ","
 
 " Numbers
 set number
-set numberwidth=5
 
 " Columns and wrapping
 set cc=80
@@ -49,6 +51,8 @@ noremap > >gv
 set hlsearch
 set incsearch
 nnoremap <leader><space> :noh<cr>
+" make searches case-sensitive only if they contain upper-case characters
+set ignorecase smartcase
 
 " Scrolling
 set scrolloff=4
@@ -56,3 +60,15 @@ set scrolloff=4
 " Switch between buffers
 nnoremap <silent> ,z :bp<CR>
 nnoremap <silent> ,x :bn<CR>
+
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" Sane cursor movement when wrapping lines
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
