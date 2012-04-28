@@ -11,7 +11,7 @@ filetype indent on
 filetype plugin on
 
 colorscheme solarized
-set background=light
+set background=dark
 
 set backupdir=~/vimtmp,.
 set directory=~/vimtmp,.
@@ -72,3 +72,9 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
+
+" ================ Turn Off Swap Files ==============
+set noswapfile
+set nobackup
+set nowb
+

@@ -1,2 +1,2 @@
-PS1="\n\w \$(rvm-prompt)\n$ "
+PS1="\w "
 

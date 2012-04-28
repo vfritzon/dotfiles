@@ -1,5 +1,6 @@
 set guifont=Inconsolata:h16
-colorscheme molokai
+colorscheme solarized
+set background=dark
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r  
