@@ -1,5 +1,3 @@
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
-source ~/bin/dotfiles/bash/bash_env
-source ~/bin/dotfiles/bash/bash_config
-source ~/bin/dotfiles/bash/bash_aliases
+source ~/dotfiles/bash/bash_env
+source ~/dotfiles/bash/bash_config
+source ~/dotfiles/bash/bash_aliases
