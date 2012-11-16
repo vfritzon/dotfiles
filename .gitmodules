@@ -13,3 +13,6 @@
 [submodule "vim/bundle/rails"]
   path = vim/bundle/rails
   url = https://github.com/tpope/vim-rails.git
+[submodule "vim/bundle/tomorrow-theme"]
+	path = vim/bundle/tomorrow-theme
+	url = https://github.com/chriskempson/vim-tomorrow-theme.git
