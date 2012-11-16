@@ -1,5 +1,6 @@
 alias ll="ls -oGhA"
 alias l="ls -G"
+alias vi=vim
 
 alias ..="cd .."
 
