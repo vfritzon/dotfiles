@@ -1,7 +1,8 @@
-set guifont=Inconsolata:h16
-colorscheme solarized
+colorscheme base16-eighties
 set background=dark
+set guioptions-=l
+set guioptions-=r
+set guioptions-=b
 set guioptions-=m
 set guioptions-=T
-set guioptions-=r  
-
+set guioptions-=r 
