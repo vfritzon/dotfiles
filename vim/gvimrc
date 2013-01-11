@@ -1,4 +1,8 @@
+colorscheme base16-eighties
 set guifont=Inconsolata:h12
+set lines=60
+set columns=200
+set transparency=1
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
@@ -6,5 +10,5 @@ set guioptions-=R
 set guioptions-=b
 set guioptions-=m
 set guioptions-=T
-set guioptions-=r 
+set guioptions-=r
 

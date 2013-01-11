@@ -1,5 +1,5 @@
 call pathogen#runtime_append_all_bundles()
-colorscheme base16-eighties
+colorscheme Tomorrow-Night-Eighties
 set background=dark
 
 set nowrap
@@ -16,3 +16,6 @@ let mapleader=","
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 
+" List trailing whitespace
+set listchars=tab:>-,trail:-
+set list
