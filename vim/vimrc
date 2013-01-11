@@ -1,1 +1,18 @@
 call pathogen#runtime_append_all_bundles()
+colorscheme base16-eighties
+set background=dark
+
+set nowrap
+
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+let mapleader=","
+
+" Edit files in directory of current file
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+
