@@ -1,3 +1,4 @@
 source ~/dotfiles/bash/bash_env
 source ~/dotfiles/bash/bash_config
 source ~/dotfiles/bash/bash_aliases
+eval "$(rbenv init -)"
