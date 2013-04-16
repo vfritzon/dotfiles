@@ -1,4 +1,4 @@
-colorscheme base16-eighties
+colorscheme Tomorrow-Night-Eighties
 set guifont=Inconsolata:h12
 set lines=60
 set columns=200
