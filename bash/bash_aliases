@@ -11,3 +11,4 @@ alias gl="git log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short"
 alias tu='top -o cpu' # cpu
 alias tm='top -o vsize' # memory
 
+alias r="bundle exec rails"
