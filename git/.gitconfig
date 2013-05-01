@@ -1,0 +1,14 @@
+[merge]
+    tool = extMerge
+[mergetool "extMerge"]
+    cmd = extMerge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    trustExitCode = false
+[diff]
+    external = extDiff
+[user]
+    name = Viktor Fritzon
+    email = viktor.fritzon@gmail.com
+[color]
+    ui = true
+[core]
+	autocrlf = input
