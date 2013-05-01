@@ -1,8 +1,13 @@
-colorscheme Tomorrow-Night-Eighties
-set guifont=Inconsolata:h12
-set lines=60
-set columns=200
-set transparency=1
+colorscheme base16-eighties
+
+if has("gui_running")
+    if has("gui_gtk2")
+        set guifont=Inconsolata\ 12
+    elseif has("gui_macvim")
+        set guifont=Inconsolata:h12
+    endif
+endif
+
 set guioptions-=l
 set guioptions-=L
 set guioptions-=r
