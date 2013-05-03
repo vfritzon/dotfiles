@@ -3,7 +3,6 @@ if [ "$TERM" == "xterm" ]; then
     export TERM=xterm-256color
 fi
 
-source ~/.bashrc-original
 source ~/dotfiles/bash/bash_env
 source ~/dotfiles/bash/bash_config
 source ~/dotfiles/bash/bash_aliases
