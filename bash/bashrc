@@ -8,5 +8,6 @@ source ~/dotfiles/bash/bash_config
 source ~/dotfiles/bash/bash_aliases
 source ~/.git-prompt.sh
 
-
 . ~/dotfiles/bash/bash_colors.sh
+source /Users/viktor/.rvm/scripts/rvm
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
