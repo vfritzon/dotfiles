@@ -2,7 +2,7 @@
 
 function __git_dirty {
     git diff --quiet HEAD &>/dev/null
-        [ $? == 1 ] && echo "!"
+        [ $? == 1 ] && echo "⚑"
 }
 
 function __git_branch {
@@ -54,8 +54,7 @@ bash_prompt() {
         local UC=$W                 # user's color
         [ $UID -eq "0" ] && UC=$R   # root's color
 
-        PS1="$B\$(__my_rvm_ruby_version)$W$EMY\W$EMW\$(__git_branch)$EMY\$(__git_dirty)${NONE}
-$ "
+        PS1="\$(__my_rvm_ruby_version)$W$Y\W$W\$(__git_branch)$Y\$(__git_dirty)${NONE} $ "
 }
 
 bash_prompt
