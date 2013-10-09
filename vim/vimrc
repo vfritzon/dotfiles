@@ -1,5 +1,6 @@
 " Mostly stolen from https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
 filetype on           " Enable filetype detection
@@ -104,8 +105,6 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-" Insert a hash rocket with <c-l>
-imap <c-l> <space>=><space>
 " Can't be bothered to understand ESC vs <c-c> in insert mode
 imap <c-c> <esc>
 " Clear the search buffer when hitting return
@@ -114,6 +113,9 @@ function! MapCR()
 endfunction
 call MapCR()
 nnoremap <leader><leader> <c-^>
+" Step through search results
+nnoremap <c-b> :cp<cr>
+nnoremap <c-n> :cn<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MULTIPURPOSE TAB KEY
@@ -220,3 +222,16 @@ function! RunTests(filename)
         end
     end
 endfunction
+
+" shift + o is slow
+set timeout timeoutlen=5000 ttimeoutlen=100
+
+set number
+set colorcolumn=79
+
+" Use ack instead of grep
+set grepprg=ack
+
+" Fix cursor shapes
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
