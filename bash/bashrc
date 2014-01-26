@@ -3,11 +3,13 @@ if [ "$TERM" == "xterm" ]; then
     export TERM=xterm-256color
 fi
 
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
 source ~/dotfiles/bash/bash_env
 source ~/dotfiles/bash/bash_config
 source ~/dotfiles/bash/bash_aliases
-source ~/.git-prompt.sh
 
-. ~/dotfiles/bash/bash_colors.sh
-source /Users/viktor/.rvm/scripts/rvm
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+source ~/dotfiles/bash/git-prompt.sh
+source ~/dotfiles/bash/git-completion.sh
+source ~/dotfiles/bash/bash_colors.sh
