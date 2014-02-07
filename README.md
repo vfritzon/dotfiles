@@ -6,7 +6,11 @@
 
 ``git clone https://github.com/vfritzon/dotfiles.git``
 
-``ln -s ~dotfiles/vim/vimrc ~/.vimrc``
+``ln -s ~/dotfiles/vim/ ~/.vimr/``
+
+``ln -s ~/dotfiles/vim/vimrc ~/.vimrc``
+
+``ln -s ~/dotfiles/bash/bashrc ~/.bash_profile``
 
 ``cd ~/dotfiles``
 
