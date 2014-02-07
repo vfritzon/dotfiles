@@ -9,12 +9,6 @@ function __git_branch {
     __git_ps1 " %s"
 }
 
-function __maybe_prefix {
-    if [ $HOSTNAME != 'mbp.local' ]; then
-        echo "\u@\h "
-    fi
-}
-
 bash_prompt() {
     local NONE="\[\033[0m\]"    # unsets color to term's fg color
 
@@ -51,7 +45,7 @@ bash_prompt() {
         local UC=$W                 # user's color
         [ $UID -eq "0" ] && UC=$R   # root's color
 
-        PS1="$(__maybe_prefix)$W$Y\w$W\$(__git_branch)$Y\$(__git_dirty)${NONE} $ "
+        PS1="$W$Y\w$W\$(__git_branch)$Y\$(__git_dirty)${NONE} $ "
 }
 
 bash_prompt
