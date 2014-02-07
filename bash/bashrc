@@ -13,3 +13,4 @@ source ~/dotfiles/bash/bash_aliases
 source ~/dotfiles/bash/git-prompt.sh
 source ~/dotfiles/bash/git-completion.sh
 source ~/dotfiles/bash/bash_colors.sh
+export PATH=/usr/local/bin:$PATH
