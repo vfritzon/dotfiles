@@ -3,6 +3,10 @@ if [ "$TERM" == "xterm" ]; then
     export TERM=xterm-256color
 fi
 
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+fi
+
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
