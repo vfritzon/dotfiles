@@ -30,3 +30,15 @@
     path = vim/bundle/ultisnips
     url = https://github.com/SirVer/ultisnips.git
     ignore = all
+[submodule "vim/bundle/javascript"]
+    path = vim/bundle/javascript
+    url = https://github.com/pangloss/vim-javascript.git
+    ignore = all
+[submodule "vim/bundle/repeat"]
+    path = vim/bundle/repeat
+    url = git://github.com/tpope/vim-repeat.git
+    ignore = all
+[submodule "vim/bundle/mustache"]
+    path = vim/bundle/mustache
+    url = git://github.com/mustache/vim-mustache-handlebars.git
+    ignore = all
