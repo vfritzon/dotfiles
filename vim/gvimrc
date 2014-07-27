@@ -1,4 +1,4 @@
-colorscheme base16-eighties
+colorscheme tomorrow
 
 if has("gui_running")
     if has("gui_gtk2")

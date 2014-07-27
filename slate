@@ -20,7 +20,7 @@ bind up:ctrl;cmd     push up    bar-resize:screenSizeY/2
 bind down:ctrl;cmd   push down  bar-resize:screenSizeY/2
 
 # Throw Bindings
-bind 0:ctrl;alt         throw 0 resize
+bind 0:ctrl;cmd         throw 0 resize
 
 # Window Hints
 bind esc:cmd hint

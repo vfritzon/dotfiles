@@ -1,17 +1,32 @@
-" Mostly stolen from https://github.com/garybernhardt/dotfiles/blob/master/.vimrc
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-set nocompatible      " We're running Vim, not Vi!
-syntax on             " Enable syntax highlighting
-filetype on           " Enable filetype detection
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-colorscheme base16-mocha
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'ChrisKempson/Vim-Tomorrow-Theme'
+Plugin 'tpope/vim-fugitive'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'kien/ctrlp.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mustache/vim-mustache-handlebars'
+call vundle#end()
+
+filetype plugin indent on
+
+" Put your non-Plugin stuff after this line
+syntax on
+
+colorscheme tomorrow
+
 set nowrap
-
-" allow unsaved background buffers and remember marks/undo for them
-set hidden
-" remember more commands and search history
-set history=10000
+set hidden "allow unsaved background buffers and remember marks/undo for them
+set history=10000 "remember more commands and search history
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -21,10 +36,8 @@ set laststatus=2
 set showmatch
 set incsearch
 set hlsearch
-" make searches case-sensitive only if they contain upper-case characters
-set ignorecase smartcase
-" highlight current line
-set cursorline
+set ignorecase smartcase "make searches case-sensitive only if they contain upper-case characters
+set cursorline "highlight current line
 set cmdheight=1
 set switchbuf=useopen
 set numberwidth=4
@@ -239,3 +252,5 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Handlebars/mustache abbreviations
 let g:mustache_abbreviations = 1
+
+set encoding=utf-8
