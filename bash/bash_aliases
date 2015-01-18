@@ -12,5 +12,3 @@ alias tu='top -o cpu' # cpu
 alias tm='top -o vsize' # memory
 
 alias r="bundle exec rails"
-
-source ~/dotfiles/bash/bash_aliases_private

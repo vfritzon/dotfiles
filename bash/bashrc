@@ -7,8 +7,8 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
+source /usr/local/opt/chruby/share/chruby/chruby.sh
 
 source ~/dotfiles/bash/bash_env
 source ~/dotfiles/bash/bash_config
@@ -18,4 +18,4 @@ source ~/dotfiles/bash/git-prompt.sh
 source ~/dotfiles/bash/git-completion.sh
 source ~/dotfiles/bash/bash_colors.sh
 
-export PATH=~/GlassFish_Server/bin:/Applications/Postgres93.app/Contents/MacOS/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
