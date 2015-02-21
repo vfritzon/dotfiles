@@ -16,12 +16,9 @@ call vundle#end()
 
 filetype plugin indent on
 
-" Put your non-Plugin stuff after this line
-syntax on
-
-:set t_Co=256 " 256 colors
-:set background=dark
-:color grb256
+syntax enable
+set background=dark
+colorscheme solarized
 
 set nowrap
 set hidden "allow unsaved background buffers and remember marks/undo for them
