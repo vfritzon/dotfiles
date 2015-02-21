@@ -1,14 +1,12 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-vinegar'
 Plugin 'tpope/vim-commentary'
+Plugin 'scrooloose/nerdtree'
 Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/JSON.vim'
 Plugin 'othree/html5.vim'
@@ -213,3 +211,6 @@ set encoding=utf-8
 if has('mouse')
 set mouse=nv
 endif
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
