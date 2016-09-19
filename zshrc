@@ -1,17 +1,34 @@
-export ZSH=$HOME/.oh-my-zsh
+# Set custom prompt
+setopt PROMPT_SUBST
+autoload -U promptinit
+promptinit
+prompt grb
 
+# Initialize completion
+autoload -U compinit
+compinit
 
-ZSH_THEME="fwalch"
-plugins=(vfritzon)
-source $ZSH/oh-my-zsh.sh
+# Colorize terminal
+alias ls='ls -G'
+alias ll='ls -lG'
+export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export GREP_OPTIONS="--color"
 
-source ~/dotfiles/bash/bash_aliases
+# Aliases
+alias ll="ls -oGhA"
+alias l="ls -G"
+alias vi=vim
+
+alias ..="cd .."
+
+alias g="git status"
+alias gc="git commit"
+alias gl="git log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short"
+
+# Nicer history
+export HISTSIZE=100000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+
+# Ruby
 source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-
-export PATH=/usr/local/bin:$PATH
-export LANG=en_US.UTF-8
-
-export DOCKER_CERT_PATH=/Users/vfritzon/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.103:2376

@@ -1,131 +1,57 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Mostly influenced by http://dougblack.io/words/a-good-vimrc.html
 
+set nocompatible
+filetype off
+set backspace=2
+
+"Plugins
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'scrooloose/nerdtree'
-Plugin 'mileszs/ack.vim'
-Plugin 'vim-scripts/JSON.vim'
-Plugin 'othree/html5.vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'tpope/vim-vinegar'
+Plugin 'tpope/vim-fugitive'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'scrooloose/syntastic'
 call vundle#end()
 
-filetype plugin indent on
-
+"Colors
+colorscheme Tomorrow-Night-Eighties
 syntax enable
-set background=dark
-colorscheme solarized
 
-set nowrap
-set hidden "allow unsaved background buffers and remember marks/undo for them
-set history=10000 "remember more commands and search history
+" https://github.com/aalin/dotfiles/blob/master/vimrc
+"
+" NOTE: Can only have three of these, using match/2match/3match:
+" http://stackoverflow.com/a/18167529/6962
+
+autocmd BufNewFile,BufRead * highlight nbsp ctermbg=Red
+autocmd BufNewFile,BufRead * match nbsp "[\xc2\xa0]"
+
+autocmd BufNewFile,BufRead * highlight trailing_spaces ctermbg=Red
+autocmd BufNewFile,BufRead * 2match trailing_spaces "\s\+$"
+
+"Spaces & tabs
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set autoindent
-set laststatus=2
+
+"UI Config
+set number
+set cursorline
+set nowrap
 set showmatch
-set incsearch
-set hlsearch
-set ignorecase smartcase "make searches case-sensitive only if they contain upper-case characters
-set cursorline "highlight current line
-set cmdheight=1
-set switchbuf=useopen
-set numberwidth=4
-set showtabline=1
-set winwidth=79
-" Prevent Vim from clobbering the scrollback buffer. See
-" http://www.shallowsky.com/linux/noaltscreen.html
-set t_ti= t_te=
-" keep more context when scrolling off the end of a buffer
-set scrolloff=3
-" Store temporary files in a central spot
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-" display incomplete commands
-set showcmd
 
-" Enable file type detection.
-" Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.
-" Also load indent files, to automatically do language-dependent indenting.
-filetype plugin indent on
-" use emacs-style tab completion when selecting files, etc
-set wildmode=longest,list
-" make tab completion for files/buffers act like bash
+set listchars=tab:>-,trail:-
+set list
+
+"Cursor
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+"Auto completion
 set wildmenu
-let mapleader=","
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CUSTOM AUTOCMDS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup vimrcEx
-  " Clear all autocmds in the group
-  autocmd!
-  autocmd FileType text setlocal textwidth=78
-  " Jump to last cursor position unless it's invalid or in an event handler
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
-  "for ruby, autoindent with two spaces, always expand tabs
-  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
-  autocmd FileType python set sw=4 sts=4 et
-
-  autocmd! BufRead,BufNewFile *.sass setfiletype sass 
-
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
-  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-
-  " Don't syntax highlight markdown because it's often wrong
-  autocmd! FileType mkd setlocal syn=off
-
-  " Leave the return key alone when in command line windows, since it's used
-  " to run commands there.
-  autocmd! CmdwinEnter * :unmap <cr>
-  autocmd! CmdwinLeave * :call MapCR()
-augroup END
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" STATUS LINE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MISC KEY MAPS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>y "*y
-" Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-" Can't be bothered to understand ESC vs <c-c> in insert mode
-imap <c-c> <esc>
-" Clear the search buffer when hitting return
-function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>
-endfunction
-call MapCR()
-nnoremap <leader><leader> <c-^>
-" Step through search results
-nnoremap <c-b> :cp<cr>
-nnoremap <c-n> :cn<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MULTIPURPOSE TAB KEY
-" Indent if we're at the beginning of a line. Else, do completion.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
@@ -137,39 +63,44 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OPEN FILES IN DIRECTORY OF CURRENT FILE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
-map <leader>v :view %%
+"Searching
+set incsearch
+set hlsearch
+nnoremap <CR> :nohlsearch<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" RENAME CURRENT FILE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
-map <leader>n :call RenameFile()<cr>
+"Folding
+set foldenable
+nnoremap <space> za
+set foldmethod=indent
+set foldlevelstart=10
 
-" List trailing whitespace
-set listchars=tab:>-,trail:-
-set list
+"Movement
+nnoremap E $
 
-" Run a given vim command on the results of fuzzy selecting from a given shell
-" command. See usage below.
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" Because I often accidentally :W when I mean to :w.
+command! W w
+
+"Backup & undo - https://coderwall.com/p/sdhfug/vim-swap-backup-and-undo-files
+set undodir=~/.vim/.undo//
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
+
+" Leader
+let mapleader=","
+
+" Run a given vim command on the results of fuzzy selecting from
+" a given shell command. See usage below. Credit: Gary Bernhardt
 function! SelectaCommand(choice_command, selecta_args, vim_command)
   try
     let selection = system(a:choice_command . " | selecta " . a:selecta_args)
   catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
+    " Swallow the ^C so that the redraw below happens
+    " otherwise, there will be leftovers from selecta on the screen
     redraw!
     return
   endtry
@@ -177,37 +108,22 @@ function! SelectaCommand(choice_command, selecta_args, vim_command)
   exec a:vim_command . " " . selection
 endfunction
 
-" Find all files in all non-dot directories starting in the working directory.
+" Find all files in all non-dot directories in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
+let fileCommand = 'find * -type f | grep -v "\(node_modules\|vendor\|tmp\|git\|public\)"'
+nnoremap <leader>f :call SelectaCommand(fileCommand, "", ":e")<cr>
+nnoremap <leader>h :call SelectaCommand(fileCommand, "", ":split")<cr>
+nnoremap <leader>v :call SelectaCommand(fileCommand, "", ":vsplit")<cr>
 
-function! SelectaIdentifier()
-  " Yank the word under the cursor into the z register
-  normal "zyiw
-  " Fuzzy match files in the current directory, starting with the word under
-  " the cursor
-  call SelectaCommand("find * -type f", "-s " . @z, ":e")
-endfunction
-nnoremap <c-g> :call SelectaIdentifier()<cr>
+let g:jsx_ext_required = 0
 
-" shift + o is slow
-set timeout timeoutlen=5000 ttimeoutlen=100
+let g:syntastic_javascript_checkers = ['eslint']
 
-set number
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" Fix cursor shapes
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
-" Handlebars/mustache abbreviations
-let g:mustache_abbreviations = 1
-
-set encoding=utf-8
-
-" Mouse
-if has('mouse')
-set mouse=nv
-endif
-
-" NERDTree
-map <C-n> :NERDTreeToggle<CR>
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
