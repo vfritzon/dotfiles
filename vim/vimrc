@@ -14,37 +14,62 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'chriskempson/base16-vim'
 call vundle#end()
 
-"Colors
-colorscheme Tomorrow-Night-Eighties
+" Colors
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+colorscheme base16-eighties
 syntax enable
 
-" https://github.com/aalin/dotfiles/blob/master/vimrc
-"
-" NOTE: Can only have three of these, using match/2match/3match:
-" http://stackoverflow.com/a/18167529/6962
-
-autocmd BufNewFile,BufRead * highlight nbsp ctermbg=Red
-autocmd BufNewFile,BufRead * match nbsp "[\xc2\xa0]"
-
-autocmd BufNewFile,BufRead * highlight trailing_spaces ctermbg=Red
-autocmd BufNewFile,BufRead * 2match trailing_spaces "\s\+$"
-
-"Spaces & tabs
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-
-"UI Config
-set number
-set cursorline
 set nowrap
+set hidden "allow unsaved background buffers and remember marks/undo for them
+set history=10000 "remember more commands and search history
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent
+set laststatus=2
 set showmatch
+set incsearch
+set hlsearch
+set ignorecase smartcase "make searches case-sensitive only if they contain upper-case characters
+set cursorline "highlight current line
+set cmdheight=1
+set numberwidth=4
+set showtabline=1
+set winwidth=79
+set number
 
 set listchars=tab:>-,trail:-
 set list
+
+autocmd FileType html,javascript,sass set ai sw=2 sts=2 et
+
+" Prevent Vim from clobbering the scrollback buffer. See
+" http://www.shallowsky.com/linux/noaltscreen.html
+set t_ti= t_te=
+" keep more context when scrolling off the end of a buffer
+set scrolloff=3
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+" display incomplete commands
+set showcmd
+
+" Enable file type detection.
+" Use the default filetype settings, so that mail gets 'tw' set to 72,
+" 'cindent' is on in C files, etc.
+" Also load indent files, to automatically do language-dependent indenting.
+filetype plugin indent on
 
 "Cursor
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
@@ -67,12 +92,6 @@ inoremap <s-tab> <c-n>
 set incsearch
 set hlsearch
 nnoremap <CR> :nohlsearch<CR>
-
-"Folding
-set foldenable
-nnoremap <space> za
-set foldmethod=indent
-set foldlevelstart=10
 
 "Movement
 nnoremap E $
@@ -119,11 +138,20 @@ let g:jsx_ext_required = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" Override eslint with local version where necessary.
+let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
+if matchstr(local_eslint, "^\/\\w") == ''
+  let local_eslint = getcwd() . "/" . local_eslint
+endif
+if executable(local_eslint)
+  let g:syntastic_javascript_eslint_exec = local_eslint
+endif
+
+" Shift O is slow
+set esckeys
+
+com! FormatJSON %!python -m json.tool
+
+set clipboard=unnamed
