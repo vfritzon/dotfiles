@@ -33,9 +33,9 @@ set nowrap
 set hidden "allow unsaved background buffers and remember marks/undo for them
 set history=10000 "remember more commands and search history
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set laststatus=2
 set showmatch
