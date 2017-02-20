@@ -5,11 +5,9 @@ promptinit
 prompt grb
 
 # Completion
-unsetopt menu_complete   # do not autoselect the first completion entry
-setopt auto_menu         # show completion menu on succesive tab press
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive tab completion
-
-autoload -U compinit
+zstyle ':completion:*' completer _complete
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+autoload -Uz compinit
 compinit
 
 # Colorize terminal
