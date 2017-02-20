@@ -19,6 +19,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'chriskempson/base16-vim'
+Plugin 'vim-ruby/vim-ruby'
 call vundle#end()
 
 " Colors
