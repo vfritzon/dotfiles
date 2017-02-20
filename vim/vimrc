@@ -156,3 +156,5 @@ set esckeys
 com! FormatJSON %!python -m json.tool
 
 set clipboard=unnamed
+
+map <leader>a :Ack <c-r><c-w>
