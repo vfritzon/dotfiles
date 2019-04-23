@@ -3,3 +3,4 @@ vim/.netrwhist
 .swp
 bash/bash_aliases_private
 vim/bundle
+vim/plugged

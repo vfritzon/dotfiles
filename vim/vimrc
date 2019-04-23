@@ -1,83 +1,38 @@
-" Mostly influenced by http://dougblack.io/words/a-good-vimrc.html
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-vinegar'
+Plug 'arcticicestudio/nord-vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'mileszs/ack.vim'
+Plug 'w0rp/ale'
+Plug 'vim-ruby/vim-ruby'
+Plug 'leafgarland/typescript-vim'
+Plug 'elixir-editors/vim-elixir'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
-set nocompatible
-filetype off
-set backspace=2
+call plug#end()
 
-"Plugins
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-fugitive'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'scrooloose/syntastic'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'chriskempson/base16-vim'
-Plugin 'vim-ruby/vim-ruby'
-call vundle#end()
+set termguicolors
+colorscheme nord
 
-" Colors
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-syntax enable
-
-set nowrap
-set hidden "allow unsaved background buffers and remember marks/undo for them
-set history=10000 "remember more commands and search history
-set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set autoindent
-set laststatus=2
-set showmatch
-set incsearch
-set hlsearch
-set ignorecase smartcase "make searches case-sensitive only if they contain upper-case characters
-set cursorline "highlight current line
-set cmdheight=1
-set numberwidth=4
-set showtabline=1
-set winwidth=79
-set number
-
-set listchars=tab:>-,trail:-
-set list
-
-autocmd FileType html,javascript,sass set ai sw=2 sts=2 et
+filetype plugin indent on
+set sw=4
+set ts=4
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
 set t_ti= t_te=
-" keep more context when scrolling off the end of a buffer
-set scrolloff=3
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-" display incomplete commands
-set showcmd
-
-" Enable file type detection.
-" Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.
-" Also load indent files, to automatically do language-dependent indenting.
-filetype plugin indent on
 
 "Cursor
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+let &t_SI.="\e[5 q" "SI = INSERT mode
+let &t_SR.="\e[4 q" "SR = REPLACE mode
+let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 
 "Auto completion
-set wildmenu
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
@@ -131,30 +86,38 @@ endfunction
 " Find all files in all non-dot directories in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
 let fileCommand = 'find * -type f | grep -v "\(node_modules\|vendor\|tmp\|git\|public\)"'
-nnoremap <leader>f :call SelectaCommand(fileCommand, "", ":e")<cr>
+nnoremap <leader>t :call SelectaCommand(fileCommand, "", ":e")<cr>
 nnoremap <leader>h :call SelectaCommand(fileCommand, "", ":split")<cr>
 nnoremap <leader>v :call SelectaCommand(fileCommand, "", ":vsplit")<cr>
 
-let g:jsx_ext_required = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-
 :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-
-" Override eslint with local version where necessary.
-let local_eslint = finddir('node_modules', '.;') . '/.bin/eslint'
-if matchstr(local_eslint, "^\/\\w") == ''
-  let local_eslint = getcwd() . "/" . local_eslint
-endif
-if executable(local_eslint)
-  let g:syntastic_javascript_eslint_exec = local_eslint
-endif
-
-" Shift O is slow
-set esckeys
 
 com! FormatJSON %!python -m json.tool
 
-set clipboard=unnamed
+noremap <Leader>a :Ack <cword><cr>
 
-map <leader>a :Ack <c-r><c-w>
+set ignorecase smartcase
+
+set nowrap
+set number
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set autoindent
+
+nnoremap <leader>d :ALEGoToDefinition<CR>
+nnoremap <leader>r :ALEFindReferences -relative<CR>
+nnoremap <leader>q :bp<CR>
+nnoremap <leader>w :bn<CR>
+
+set encoding=utf-8  " The encoding displayed.
+set fileencoding=utf-8  " The encoding written to file.
+
+" ale
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
+\   'css': ['prettier'],
+\}
+let g:ale_fix_on_save = 1
