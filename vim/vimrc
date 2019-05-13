@@ -3,6 +3,10 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'itchyny/lightline.vim'
+Plug 'Quramy/tsuquyomi'
 Plug 'arcticicestudio/nord-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-gitgutter'
@@ -16,7 +20,6 @@ Plug 'mxw/vim-jsx'
 
 call plug#end()
 
-set termguicolors
 colorscheme nord
 
 filetype plugin indent on
@@ -47,7 +50,7 @@ inoremap <s-tab> <c-n>
 "Searching
 set incsearch
 set hlsearch
-nnoremap <CR> :nohlsearch<CR>
+nnoremap <leader><leader> :nohlsearch<CR>
 
 "Movement
 nnoremap E $
@@ -90,8 +93,6 @@ nnoremap <leader>t :call SelectaCommand(fileCommand, "", ":e")<cr>
 nnoremap <leader>h :call SelectaCommand(fileCommand, "", ":split")<cr>
 nnoremap <leader>v :call SelectaCommand(fileCommand, "", ":vsplit")<cr>
 
-:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-
 com! FormatJSON %!python -m json.tool
 
 noremap <Leader>a :Ack <cword><cr>
@@ -106,18 +107,42 @@ set shiftwidth=2
 set softtabstop=2
 set autoindent
 
-nnoremap <leader>d :ALEGoToDefinition<CR>
-nnoremap <leader>r :ALEFindReferences -relative<CR>
-nnoremap <leader>q :bp<CR>
-nnoremap <leader>w :bn<CR>
+nnoremap <leader>d :TsuDefinition<cr>
+nnoremap <leader>D :TsuTypeDefinition<cr>
+nnoremap <leader>r :TsuReferences<cr>
+nnoremap <leader>rn :TsuRenameSymbol<cr>
 
 set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
 
 " ale
 let g:ale_fixers = {
-\   'javascript': ['prettier'],
 \   'typescript': ['prettier'],
 \   'css': ['prettier'],
 \}
+
+let g:ale_linters = {'typescript': ['tsserver']}
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_delay = 0
+
 let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+let g:tsuquyomi_disable_quickfix = 1
+
+nnoremap g1 :silent! :silent! :ll 1\|:normal zz<cr>
+nnoremap gj :silent! :ll\|:silent! :lnext\|:normal zz<cr>
+nnoremap gk :silent! :ll\|:silent! :lprev\|:normal zz<cr>
+
+" lightline
+set noshowmode
+let g:lightline = {
+      \ 'colorscheme': 'nord',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
