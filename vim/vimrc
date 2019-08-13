@@ -50,7 +50,7 @@ inoremap <s-tab> <c-n>
 "Searching
 set incsearch
 set hlsearch
-nnoremap <leader><leader> :nohlsearch<CR>
+nnoremap <leader><leader> :nohlsearch<cr>
 
 "Movement
 nnoremap E $
@@ -90,11 +90,10 @@ endfunction
 " Fuzzy select one of those. Open the selected file with :e.
 let fileCommand = 'find * -type f | grep -v "\(node_modules\|vendor\|tmp\|git\|public\)"'
 nnoremap <leader>t :call SelectaCommand(fileCommand, "", ":e")<cr>
-nnoremap <leader>h :call SelectaCommand(fileCommand, "", ":split")<cr>
-nnoremap <leader>v :call SelectaCommand(fileCommand, "", ":vsplit")<cr>
 
 com! FormatJSON %!python -m json.tool
 
+noremap <leader>s :update<cr>
 noremap <Leader>a :Ack <cword><cr>
 
 set ignorecase smartcase
@@ -107,10 +106,12 @@ set shiftwidth=2
 set softtabstop=2
 set autoindent
 
+" Typescript
 nnoremap <leader>d :TsuDefinition<cr>
 nnoremap <leader>D :TsuTypeDefinition<cr>
 nnoremap <leader>r :TsuReferences<cr>
 nnoremap <leader>rn :TsuRenameSymbol<cr>
+nnoremap <leader>b :TsuGoBack<cr>
 
 set encoding=utf-8  " The encoding displayed.
 set fileencoding=utf-8  " The encoding written to file.
@@ -118,6 +119,7 @@ set fileencoding=utf-8  " The encoding written to file.
 " ale
 let g:ale_fixers = {
 \   'typescript': ['prettier'],
+\   'html': ['prettier'],
 \   'css': ['prettier'],
 \}
 
@@ -134,13 +136,16 @@ nnoremap g1 :silent! :silent! :ll 1\|:normal zz<cr>
 nnoremap gj :silent! :ll\|:silent! :lnext\|:normal zz<cr>
 nnoremap gk :silent! :ll\|:silent! :lprev\|:normal zz<cr>
 
+autocmd FileType typescript nmap <buffer> <Leader>h : <C-u>echo tsuquyomi#hint()<CR>
+
 " lightline
 set noshowmode
 let g:lightline = {
       \ 'colorscheme': 'nord',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right': [['lineinfo'],['percent'],['filetype']]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'fugitive#head'

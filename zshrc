@@ -38,14 +38,7 @@ export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
-# Ruby
-source /usr/local/share/chruby/chruby.sh
-# RUBIES=("$HOME/.rubies/")
-
 # Track your most used directories, based on 'frecency' : https://github.com/rupa/z
 . ~/bin/z.sh
 
 export PATH=/usr/local/bin:$PATH
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
