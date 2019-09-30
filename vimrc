@@ -61,7 +61,7 @@ inoremap <silent><expr> <Tab>
 "Searching
 set incsearch
 set hlsearch
-nnoremap <leader><leader> :nohlsearch<cr>
+nnoremap <cr> :nohlsearch<cr>
 
 "Movement
 nnoremap E $
