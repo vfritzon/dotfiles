@@ -46,17 +46,6 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
-"
-" function! InsertTabWrapper()
-"     let col = col('.') - 1
-"     if !col || getline('.')[col - 1] !~ '\k'
-"         return "\<tab>"
-"     else
-"         return "\<c-p>"
-"     endif
-" endfunction
-" inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-" inoremap <s-tab> <c-n>
 
 "Searching
 set incsearch
