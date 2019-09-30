@@ -37,6 +37,7 @@ alias ws="ruby -run -e httpd -- -p 5000 ."
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
+setopt share_history
 
 # Track your most used directories, based on 'frecency' : https://github.com/rupa/z
 . ~/bin/z.sh
