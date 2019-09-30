@@ -43,3 +43,4 @@ setopt share_history
 . ~/bin/z.sh
 
 export PATH=/usr/local/bin:~/development/flutter/bin:~/development/flutter/bin/cache/dart-sdk/bin:$PATH
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
