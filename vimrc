@@ -62,6 +62,7 @@ inoremap <silent><expr> <Tab>
 set incsearch
 set hlsearch
 nnoremap <cr> :nohlsearch<cr>
+nnoremap <leader>t :Files<cr>
 
 "Movement
 nnoremap E $

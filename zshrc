@@ -42,5 +42,11 @@ setopt share_history
 # Track your most used directories, based on 'frecency' : https://github.com/rupa/z
 . ~/bin/z.sh
 
-export PATH=/usr/local/bin:~/development/flutter/bin:~/development/flutter/bin/cache/dart-sdk/bin:$PATH
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
+
+# https://www.mail-archive.com/bug-gnulib@gnu.org/msg36768.html
+export LC_ALL=en_US.UTF-8
+
+export PATH=/usr/local/bin:~/development/flutter/bin:~/development/flutter/bin/cache/dart-sdk/bin:$PATH
