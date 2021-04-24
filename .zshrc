@@ -1,8 +1,12 @@
-# Set custom prompt
-setopt PROMPT_SUBST
-autoload -U promptinit
-promptinit
-prompt grb
+# Prompt
+PROMPT='%1~ %F{208}❯%f '
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
+zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
+zstyle ':vcs_info:*' enable git
 
 # Completion
 zstyle ':completion:*' completer _complete
@@ -41,12 +45,21 @@ setopt share_history
 
 # Track your most used directories, based on 'frecency' : https://github.com/rupa/z
 . ~/bin/z.sh
+unalias z 2> /dev/null
+z() {
+  [ $# -gt 0 ] && _z "$*" && return
+  cd "$(_z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+}
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 
-# https://www.mail-archive.com/bug-gnulib@gnu.org/msg36768.html
-export LC_ALL=en_US.UTF-8
+# node
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
-export PATH=/usr/local/bin:~/development/flutter/bin:~/development/flutter/bin/cache/dart-sdk/bin:$PATH
+# ruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+chruby ruby-3.0.1
