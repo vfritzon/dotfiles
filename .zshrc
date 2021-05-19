@@ -24,7 +24,7 @@ export GREP_OPTIONS="--color"
 alias ll="ls -oGhA"
 alias l="ls -G"
 alias vi=vim
-alias vimrc="vim ~/dotfiles/vimrc"
+alias vimrc="vim ~/dotfiles/.vimrc"
 
 alias ..="cd .."
 
