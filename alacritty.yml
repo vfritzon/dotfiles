@@ -1,0 +1,45 @@
+window:
+  padding:
+    x: 6
+    y: 4
+
+font:
+  normal:
+    family: Inconsolata-dz
+
+  size: 17.0
+  use_thin_strokes: true
+
+draw_bold_text_with_bright_colors: false
+
+colors:
+  primary:
+    background: '#fafafa'
+    foreground: '#383a42'
+  cursor:
+    text:       CellBackground
+    cursor:     '#526eff'
+  selection:
+    text:       CellForeground
+    background: '#e5e5e6'
+  normal:
+    black:      '#696c77'
+    red:        '#e45649'
+    green:      '#50a14f'
+    yellow:     '#c18401'
+    blue:       '#4078f2'
+    magenta:    '#a626a4'
+    cyan:       '#0184bc'
+    white:      '#a0a1a7'
+
+live_config_reload: true
+
+selection:
+  save_to_clipboard: true
+
+alt_send_esc: false
+
+key_bindings:
+  - { key: F,     mods: Command|Control, action: ToggleSimpleFullscreen }
+  - { key: Left,  mods: Alt,             chars: "\x1bb"                 } # one word left
+  - { key: Right, mods: Alt,             chars: "\x1bf"                 } # one word right

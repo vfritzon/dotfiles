@@ -7,4 +7,5 @@ ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/dotfiles/.githelpers ~/.githelpers
 ln -s ~/dotfiles/.gitignore ~/.gitignore
+ln -s ~/dotfiles/alacritty.yml .config/alacritty/alacritty.yml
 ```
