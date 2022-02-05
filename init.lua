@@ -48,6 +48,7 @@ require('packer').startup(function()
   use 'rakr/vim-one'
 
   use 'pantharshit00/vim-prisma'
+  use 'christoomey/vim-tmux-navigator'
 end)
 
 require'lspconfig'.tsserver.setup{}
@@ -94,8 +95,8 @@ vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true,
 -- Highlight on yank
 vim.cmd [[
 augroup YankHighlight
-autocmd!
-autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+  autocmd!
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank()
 augroup end
 ]]
 
