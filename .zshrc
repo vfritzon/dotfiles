@@ -27,7 +27,7 @@ alias ll="ls -oGhA"
 alias l="ls -G"
 alias vi=nvim
 alias vim=nvim
-alias vimrc="vim ~/dotfiles/.vimrc"
+alias vimrc="vim ~/dotfiles/init.lua"
 
 alias ..="cd .."
 
