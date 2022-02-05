@@ -1,8 +1,7 @@
 # Dotfiles
 
 ```
-cd ~
-git clone https://github.com/vfritzon/dotfiles.git
+git clone https://github.com/vfritzon/dotfiles.git ~/dotfiles && cd ~/dotfiles
 brew bundle
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.gitconfig ~/.gitconfig
