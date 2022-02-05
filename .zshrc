@@ -8,7 +8,7 @@ RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
 zstyle ':vcs_info:*' enable git
 
-export EDITOR=vim
+export EDITOR=nvim
 
 # Completion
 zstyle ':completion:*' completer _complete
@@ -25,7 +25,8 @@ export GREP_OPTIONS="--color"
 # Aliases
 alias ll="ls -oGhA"
 alias l="ls -G"
-alias vi=vim
+alias vi=nvim
+alias vim=nvim
 alias vimrc="vim ~/dotfiles/.vimrc"
 
 alias ..="cd .."
