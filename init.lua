@@ -49,6 +49,7 @@ require('packer').startup(function()
 
   use 'pantharshit00/vim-prisma'
   use 'christoomey/vim-tmux-navigator'
+  use 'sbdchd/neoformat'
 end)
 
 require'lspconfig'.tsserver.setup{}
@@ -69,6 +70,10 @@ vim.o.background = 'light'
 vim.cmd [[colorscheme one]]
 
 vim.o.completeopt = 'menuone,noselect'
+
+vim.g.neoformat_try_node_exe = 1
+
+vim.cmd [[autocmd BufWritePre *.{js,ts,tsx,jsx,json,html} Neoformat]]
 
 require('lualine').setup {
   options = {
