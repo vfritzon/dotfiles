@@ -54,6 +54,7 @@ end)
 
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.tailwindcss.setup{}
+require'lspconfig'.eslint.setup{}
 
 vim.wo.wrap = false
 vim.wo.number = true
@@ -73,7 +74,7 @@ vim.o.completeopt = 'menuone,noselect'
 
 vim.g.neoformat_try_node_exe = 1
 
-vim.cmd [[autocmd BufWritePre *.{js,ts,tsx,jsx,json,html} Neoformat]]
+vim.cmd [[autocmd BufWritePre *.{js,ts,tsx,jsx,json,html} Neoformat prettierd]]
 
 require('lualine').setup {
   options = {
