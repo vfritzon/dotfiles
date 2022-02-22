@@ -1,25 +1,15 @@
-# Heavily inspired by https://github.com/garybernhardt/dotfiles/blob/07bbd349eb0480dc07a6514efde30b8223d18b1d/.gitconfig
-
+[user]
+  name = Viktor Fritzon
+	email = viktor@tool.builders
 [init]
   defaultBranch = main
 [core]
-  editor = nvim
+  editor = vim
   pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = /Users/vfn/.gitignore_global
 [diff]
 [color]
   ui = auto
-[color "diff-highlight"]
-  oldNormal = red
-  oldHighlight = red "#500000"
-  newNormal = green
-  newHighlight = green "#003000"
-[color "diff"]
-  meta = 11
-  frag = magenta bold
-  commit = yellow bold
-  old = red
-  new = green
-  whitespace = "#ffff00" reverse
 [alias]
   st = status
   ci = commit --verbose
@@ -53,3 +43,7 @@
 [diff-so-fancy]
   stripLeadingSymbols = false
   markEmptyLines = false
+[pull]
+  ff = only
+  ff = only
+  twohead = ort

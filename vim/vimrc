@@ -1,0 +1,79 @@
+call plug#begin()
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'tpope/vim-sensible'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-vinegar'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-unimpaired'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-rhubarb'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-endwise'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'jonathanfilip/vim-lucius'
+  Plug 'vim-ruby/vim-ruby'
+  Plug 'machakann/vim-highlightedyank'
+call plug#end()
+
+set rtp+=/usr/local/opt/fzf
+let g:fzf_layout = { 'down': '40%' }
+autocmd! FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+
+set nowrap
+set nocompatible
+set nobackup
+set nowritebackup
+set noswapfile
+
+" cursor
+let &t_SI = "\<esc>[5 q" " blinking I-beam in insert mode
+let &t_SR = "\<esc>[3 q" " blinking underline in replace mode
+let &t_EI = "\<esc>[ q"  " default cursor (usually blinking block) otherwise
+
+set mouse=a
+set ttymouse=sgr
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+nnoremap <silent> <cr> :noh<CR>
+
+filetype plugin on
+syntax on
+
+set autoindent
+set smartindent
+filetype indent on
+
+autocmd FileType typescript,javascript,json,typescriptreact setlocal shiftwidth=2 softtabstop=2 expandtab
+
+set backspace=2
+
+set completeopt+=popup
+set completepopup=align:menu,border:off,highlight:Pmenu
+
+" leader
+let mapleader = ","
+nnoremap <leader>s :w<cr>
+nnoremap <silent> <leader>f :Files<cr>
+nnoremap <silent> <leader>rg :Rg <C-R><C-W><CR>
+
+" easier split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" open splits to right and bottom
+set splitbelow
+set splitright
+
+" colors
+set termguicolors
+colorscheme lucius
+LuciusLightHighContrast
+let g:airline_theme='lucius'

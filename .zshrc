@@ -1,5 +1,5 @@
 # Prompt
-PROMPT='%1~ $ '
+PROMPT='[%2~]$ '
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
@@ -8,15 +8,19 @@ RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
 zstyle ':vcs_info:*' enable git
 
-export EDITOR=nvim
+export EDITOR=vim
 
-# Completion
+# completion
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fi
 autoload -Uz compinit
 compinit
 
-# Colorize terminal
+
+# colors
 alias ls='ls -G'
 alias ll='ls -lG'
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
@@ -25,9 +29,7 @@ export GREP_OPTIONS="--color"
 # Aliases
 alias ll="ls -oGhA"
 alias l="ls -G"
-alias vi=nvim
-alias vim=nvim
-alias vimrc="vim ~/dotfiles/init.lua"
+alias vimrc="vim ~/.vimrc"
 
 alias ..="cd .."
 
@@ -40,31 +42,32 @@ alias nr="npm run"
 
 alias ws="ruby -run -e httpd -- -p 5000 ."
 
-# Nicer history
+# history
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 setopt share_history
 
-# Zoxide (https://github.com/ajeetdsouza/zoxide)
 eval "$(zoxide init zsh)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
-export FZF_DEFAULT_OPTS='--color=light'
-
+export FZF_DEFAULT_OPTS='--color=light,gutter:-1,bg+:#f0f0f0'
 
 # node
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-# ruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
-chruby ruby-3.0.1
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# dotnet
-export PATH="~/.dotnet:$PATH"
+# gpg
+export GPG_TTY=$(tty)
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# completions
+
+# docker
+source /Users/vfn/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+# path
+export PATH="$HOME/bin:$PATH"
