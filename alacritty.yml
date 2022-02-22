@@ -5,7 +5,7 @@ window:
 
 font:
   normal:
-    family: Inconsolata-dz
+    family: Inconsolata-g
 
   size: 17.0
   use_thin_strokes: true
