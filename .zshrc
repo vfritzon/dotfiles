@@ -1,5 +1,5 @@
-# Prompt
-PROMPT='%1~ $ '
+# prompt
+PROMPT='[%2~]$ '
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
@@ -8,55 +8,58 @@ RPROMPT=\$vcs_info_msg_0_
 zstyle ':vcs_info:git:*' formats '%F{240}(%b)%r%f'
 zstyle ':vcs_info:*' enable git
 
-export EDITOR=nvim
+# editor
+export EDITOR=vim
 
-# Completion
+# completion
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+fi
 autoload -Uz compinit
 compinit
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Colorize terminal
+# colors
 alias ls='ls -G'
 alias ll='ls -lG'
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
-# Aliases
+# aliases
 alias ll="ls -oGhA"
 alias l="ls -G"
-alias vi=nvim
-alias vim=nvim
-alias vimrc="vim ~/dotfiles/init.lua"
-
+alias vimrc="vim ~/.vimrc"
 alias ..="cd .."
-
 alias g="git status"
 alias gc="git commit"
 alias gl="git log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short"
 alias gp="git pull --ff-only"
-
 alias nr="npm run"
-
 alias ws="ruby -run -e httpd -- -p 5000 ."
 
-# Nicer history
+# history
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 setopt share_history
 
-# Zoxide (https://github.com/ajeetdsouza/zoxide)
+# navigation
 eval "$(zoxide init zsh)"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
-export FZF_DEFAULT_OPTS='--color=light'
-
+export FZF_DEFAULT_OPTS='--color=light,gutter:-1,bg+:#f0f0f0'
 
 # node
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# gpg
+export GPG_TTY=$(tty)
+
+# path
+export PATH="$HOME/bin:$PATH"

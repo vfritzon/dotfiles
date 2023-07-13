@@ -1,14 +1,12 @@
-# Heavily inspired by https://github.com/garybernhardt/dotfiles/blob/07bbd349eb0480dc07a6514efde30b8223d18b1d/.gitconfig
-
 [user]
   name = Viktor Fritzon
   email = viktor@tool.builders
 [init]
   defaultBranch = main
 [core]
-  editor = nvim
+  editor = vim
   pager = diff-so-fancy | less --tabs=4 -RFX
-[diff]
+	excludesfile = /Users/vfn/.gitignore_global
 [color]
   ui = auto
 [alias]
@@ -45,4 +43,5 @@
   stripLeadingSymbols = false
   markEmptyLines = false
 [pull]
-	ff = only
+  ff = only
+  twohead = ort
