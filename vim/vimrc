@@ -9,13 +9,9 @@ call plug#begin()
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-rhubarb'
-  Plug 'tpope/vim-rails'
   Plug 'tpope/vim-endwise'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'jonathanfilip/vim-lucius'
-  Plug 'vim-ruby/vim-ruby'
   Plug 'machakann/vim-highlightedyank'
+  Plug 'rakr/vim-one'
 call plug#end()
 
 set rtp+=/usr/local/opt/fzf
@@ -28,6 +24,10 @@ set nocompatible
 set nobackup
 set nowritebackup
 set noswapfile
+set number
+set termguicolors
+
+colorscheme one
 
 " cursor
 let &t_SI = "\<esc>[5 q" " blinking I-beam in insert mode
@@ -72,8 +72,4 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
-" colors
-set termguicolors
-colorscheme lucius
-LuciusLightHighContrast
-let g:airline_theme='lucius'
+

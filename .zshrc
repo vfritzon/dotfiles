@@ -1,3 +1,6 @@
+# gpg
+export GPG_TTY=$(tty)
+
 # prompt
 PROMPT='[%2~]$ '
 autoload -Uz vcs_info
@@ -10,6 +13,7 @@ zstyle ':vcs_info:*' enable git
 
 # editor
 export EDITOR=vim
+bindkey -e # fixes emacs bindings in vscode shell
 
 # completion
 zstyle ':completion:*' completer _complete
@@ -19,7 +23,6 @@ if type brew &>/dev/null; then
 fi
 autoload -Uz compinit
 compinit
-source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # colors
 alias ls='ls -G'
@@ -28,6 +31,7 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
 # aliases
+alias vi="nvim"
 alias ll="ls -oGhA"
 alias l="ls -G"
 alias vimrc="vim ~/.vimrc"
@@ -37,7 +41,8 @@ alias gc="git commit"
 alias gl="git log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short"
 alias gp="git pull --ff-only"
 alias nr="npm run"
-alias ws="ruby -run -e httpd -- -p 5000 ."
+alias br="bun run --bun"
+alias ws="ruby -run -e httpd -- -p 7000 ."
 
 # history
 export HISTSIZE=100000
@@ -57,9 +62,19 @@ export FZF_DEFAULT_OPTS='--color=light,gutter:-1,bg+:#f0f0f0'
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
-
-# gpg
-export GPG_TTY=$(tty)
-
 # path
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$PATH:$HOME/go/bin"
+
+# bun completions
+[ -s "/Users/vfn/.bun/_bun" ] && source "/Users/vfn/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/vfn/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/vfn/google-cloud-sdk/path.zsh.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/vfn/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/vfn/google-cloud-sdk/completion.zsh.inc'; fi
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
