@@ -1,0 +1,30 @@
+[submodule "vim/pack/start/base16"]
+	path = vim/pack/start/base16
+	url = https://github.com/chriskempson/base16-vim.git
+[submodule "vim/pack/other/start/fzf.vim"]
+	path = vim/pack/other/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "vim/pack/other/start/fzf"]
+	path = vim/pack/other/start/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "vim/pack/colors/start/nord"]
+	path = vim/pack/colors/start/nord
+	url = https://github.com/nordtheme/vim.git
+[submodule "vim/pack/colors/start/base16"]
+	path = vim/pack/colors/start/base16
+	url = https://github.com/chriskempson/base16-vim.git
+[submodule "vim/pack/other/start/lsp"]
+	path = vim/pack/other/start/lsp
+	url = https://github.com/yegappan/lsp.git
+[submodule "vim/pack/colors/start/ayu-vim"]
+	path = vim/pack/colors/start/ayu-vim
+	url = https://github.com/ayu-theme/ayu-vim.git
+[submodule "vim/pack/other/start/vim-prettier"]
+	path = vim/pack/other/start/vim-prettier
+	url = https://github.com/prettier/vim-prettier.git
+[submodule "vim/pack/other/opt/lsp"]
+	path = vim/pack/other/opt/lsp
+	url = https://github.com/yegappan/lsp.git
+[submodule "vim/pack/other/start/vim-vinegar"]
+	path = vim/pack/other/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git

@@ -31,7 +31,7 @@ export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 export GREP_OPTIONS="--color"
 
 # aliases
-alias vi="nvim"
+alias vi="vim"
 alias ll="ls -oGhA"
 alias l="ls -G"
 alias vimrc="vim ~/.vimrc"
